@@ -31,7 +31,8 @@ const User = mongoose.model("User", userSchema);
 
 app.use(
   cors({
-    origin: "https://user-auth-client-six.vercel.app", // Your frontend URL
+    origin: ["https://user-auth-client-six.vercel.app"],
+    methods:["GET","POST"],
 
     credentials: true, // Allow cookies to be sent
   })
