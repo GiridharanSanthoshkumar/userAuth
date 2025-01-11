@@ -31,7 +31,7 @@ const User = mongoose.model("User", userSchema);
 
 app.use(
   cors({
-    origin: ["http:localhost:3000"],
+    origin: ["https://userauth-3w1e.onrender.com"],
     methods:["GET","POST"],
 
     credentials: true, // Allow cookies to be sent
