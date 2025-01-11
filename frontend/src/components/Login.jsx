@@ -23,7 +23,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/auth/login", formData, {
+      const response = await axios.post("/auth/login", formData, {
         withCredentials: true, // Important for session handling
       });
         setSuccessMessage(response.data.message || "Logged in successfully");

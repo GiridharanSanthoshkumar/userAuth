@@ -26,7 +26,7 @@ const Signup = () => {
        setErrorMessage(""); // Clear error message on input change
     setSuccessMessage(""); // Clear success message on input change
     try {
-      const response = await axios.post("http://localhost:5000/auth/signup", formData, {
+      const response = await axios.post("/auth/signup", formData, {
         withCredentials: true, // Important for session handling
       });
         setSuccessMessage(response.data.message); // Show success message
