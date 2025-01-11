@@ -41,8 +41,7 @@ const MongoStore = require('connect-mongo');
   next();
 });*/
 
-//app.use(cors({ origin: ["https://user-auth-client-six.vercel.app"], methods:["POST","GET"],credentials: true }));
-app.options("*", cors()); // Handle preflight requests
+
 
 /*app.options("*", (req, res) => {
   res.header("Access-Control-Allow-Origin", "https://user-auth-client-six.vercel.app");
@@ -54,19 +53,18 @@ app.options("*", cors()); // Handle preflight requests
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 
 
 app.use(
   session({
     secret: process.env.SESSIONSECRET,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     store: MongoStore.create({ mongoUrl: process.env.DBURL }),
     cookie: {
       secure: true,
-      //httpOnly: true,
-      sameSite: "none",
+      httpOnly: true,
+      //sameSite: "none",
       maxAge: 1000 * 60 * 60
     },
   })
