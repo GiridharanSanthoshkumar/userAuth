@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model("User", userSchema);
 
-const MongoStore = require('connect-mongo');
+
 
 
 
@@ -60,9 +60,12 @@ app.use(
     secret: process.env.SESSIONSECRET,
     resave: false,
     saveUninitialized: true,
+    name:"unique_name",
     
     cookie: {
       secure: true,
+      httpOnly:false,
+      sameSite:"none"
      
     },
   })
