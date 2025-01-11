@@ -7,9 +7,6 @@ const bcrypt = require("bcrypt");
 const mongoose = require("mongoose"); 
 require('dotenv').config();
 
-const MongoStore = require("connect-mongo");
-
-
 
 
 // Connect to MongoDB
@@ -65,7 +62,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
-/*
+
 app.use(
   session({
     secret: process.env.SESSIONSECRET,
@@ -75,24 +72,7 @@ app.use(
       secure: true,
       httpOnly: true,
       sameSite: "none",
-      domain: ".vercel.app",
-    },
-  })
-);
-*/
-
-app.use(
-  session({
-    secret: process.env.SESSIONSECRET,
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create({
-      mongoUrl: process.env.DBURL, // Your MongoDB connection string
-    }),
-    cookie: {
-      secure: true, // Secure cookies in production
-      httpOnly: true,
-      sameSite: "none", // Required for cross-origin cookies
+      
     },
   })
 );
