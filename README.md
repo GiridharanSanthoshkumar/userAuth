@@ -1,24 +1,22 @@
-after cloning the repo
-in the terminal, go to backend directory using cd command
-install dependencies "npm install"
-and then create .env file in the backend folder and
-add the following;
+after cloning the repo,
+in the terminal, go to frontend directory using cd command "cd frontend"
+install dependencies using "npm install" in the terminal
+build the react code to generate the build folder using "npm run build"
 
-DBURL="your mongodbcommunity server uri running in the localhost"
+and then create .env file in the root directory 
+add the following in the .env file;
+
+DBURL="your mongodbcommunity server uri running in the localhost/cloud"
 SESSIONSECRET="any secret key you can provide for session data encryption"
 
-to enter the dburl in .env file , start your mongodb community server in the localhost and put the 
-link in the DBURL.
+then in the terminal, go to the folder root and install the dependencies for node using "npm install" 
 
 
-then in the another terminal window, go to the frontend folder using the cd command
-using the "npm install", install the dependencies 
+then start the server using command "node index.js" 
 
-then start the backend server using "node index.js" in backend folder terminal
+the application is available in "http://localhost:5000"
 
-start the compile and view the frontend "npm start" in the frontend folder terminal
-
-the application is available in "http://localhost:3000"
+and i have deployed this authentication basic app ,here is the link:https://userauth-3w1e.onrender.com/
 
 
 
