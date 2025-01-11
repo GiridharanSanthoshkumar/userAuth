@@ -39,7 +39,7 @@ app.use(
     secret: process.env.SESSIONSECRET, // Set this in an environment variable
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false }, // Use secure: true in production with HTTPS
+    cookie: { secure: true }, // Use secure: true in production with HTTPS
   })
 );
 
