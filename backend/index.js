@@ -61,16 +61,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// Session Middleware
+
+
 app.use(
   session({
-    secret: process.env.SESSIONSECRET, // Set this in an environment variable
+    secret: process.env.SESSIONSECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true }, // Use secure: true in production with HTTPS
+    cookie: {
+      secure: true,
+      httpOnly: true,
+      sameSite: "none",
+    },
   })
 );
-
 // Signup Route
 app.post("/auth/signup", async (req, res) => {
   const { username, usermail, password } = req.body;
