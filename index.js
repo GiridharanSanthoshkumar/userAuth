@@ -31,7 +31,7 @@ const User = mongoose.model("User", userSchema);
 
 app.use(
   cors({
-    origin: ["https://user-auth-client-six.vercel.app"],
+    origin: ["http:localhost:3000"],
     methods:["GET","POST"],
 
     credentials: true, // Allow cookies to be sent
@@ -69,9 +69,9 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: true,
-      httpOnly: true,
-      sameSite: "none",
+      secure: false, //put true in production 
+     //httpOnly: true,
+      //sameSite: "none",
       
     },
   })
@@ -129,7 +129,8 @@ app.post("/auth/login", async (req, res) => {
 });
 
 // Profile Route
-app.get("/profile", async(req, res) => {
+app.get("/auth/profile", async (req, res) => {
+  
     if (req.session.user) {
     const user = await User.findOne({ _id:req.session.user.user_id });
     res.status(200).json({ data: user });
@@ -145,6 +146,12 @@ app.post("/auth/logout", (req, res) => {
     res.clearCookie("connect.sid"); // Clear session cookie
     res.status(200).json({ message: "Logged out successfully" });
   });
+});
+
+app.use(express.static(__dirname+"/frontend/build"));
+// React fallback route
+app.get("*", (req, res) => {
+  res.sendFile(__dirname + "/frontend/build/index.html");
 });
 
 // Start Server

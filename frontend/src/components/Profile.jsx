@@ -10,7 +10,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get("https://userauthserver-liard.vercel.app/profile", {
+        const response = await axios.get("http://localhost:5000/auth/profile", {
           withCredentials: true, // Include session cookie
         });
         setProfileData(response.data.data); // Set profile data
@@ -32,7 +32,7 @@ const Profile = () => {
     try {
       // Call the logout API
       const response = await axios.post(
-        "https://userauthserver-liard.vercel.app/auth/logout",
+        "http://localhost:5000/auth/logout",
         {},
         { withCredentials: true } // Include session cookie
       );
