@@ -10,7 +10,7 @@ require('dotenv').config();
 
 
 // Connect to MongoDB
-mongoose.connect("mongodb+srv://giridharansanthosh0501:2aD963j5z0udTqCB@cluster0.l9qrt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
+mongoose.connect(process.env.DBURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
