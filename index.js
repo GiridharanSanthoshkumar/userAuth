@@ -33,13 +33,13 @@ const User = mongoose.model("User", userSchema);
 
 
 
-/*app.use((req, res, next) => {
+app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "https://user-auth-client-six.vercel.app");
   res.header("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.header("Access-Control-Allow-Credentials", "true");
   next();
-});*/
+});
 
 
 
@@ -54,6 +54,7 @@ const User = mongoose.model("User", userSchema);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.set("trust proxy",1);
 
 app.use(
   session({
@@ -61,6 +62,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     name:"unique_name",
+    proxy:true,
     
     cookie: {
       secure: true,
