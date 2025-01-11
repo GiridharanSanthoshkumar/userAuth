@@ -28,15 +28,10 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model("User", userSchema);
 
+const MongoStore = require('connect-mongo');
 
-app.use(
-  cors({
-    origin: ["https://userauth-3w1e.onrender.com"],
-    methods:["GET","POST"],
 
-    credentials: true, // Allow cookies to be sent
-  })
-);
+
 
 /*app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "https://user-auth-client-six.vercel.app");
@@ -62,17 +57,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
-
 app.use(
   session({
     secret: process.env.SESSIONSECRET,
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.DBURL }),
     cookie: {
-      secure: true, //put true in production 
-     httpOnly: true,
+      secure: true,
+      //httpOnly: true,
       sameSite: "none",
-      
+      maxAge: 1000 * 60 * 60
     },
   })
 );
