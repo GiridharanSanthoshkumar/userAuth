@@ -72,9 +72,11 @@ app.use(
       secure: true,
       httpOnly: true,
       sameSite: "none",
+      domain: ".vercel.app",
     },
   })
 );
+
 // Signup Route
 app.post("/auth/signup", async (req, res) => {
   const { username, usermail, password } = req.body;
